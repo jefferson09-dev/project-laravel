@@ -1,7 +1,9 @@
-create table user(
-    id BIGINT auto_inclement,
-    primary (id),
+-- banco de dados de estudos
+-- tablea users
+create table users(
+    id BIGINT auto_increment,
+    primary key (id),
     email varchar(80),
     senhas varchar(250),
-    active boolean dafault false
+    active boolean default false
 ) engine=InnoDB default charset=utf8mb4;
