@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UsersController;
 
 
 
@@ -11,7 +11,4 @@ Route::get('/', function () {
 Route::get('/register', function() {
      return view('startbootstrap.register');
 });
-Route::post('/register', function() {
-     return $_POST;
-     // "usermail":"jeffersonn.rodrigo.09@gmail.com","userpasse":"1234","userpasseconfirma":"1234"
-});
+Route::post('/register', [UsersController::class, 'create']);
