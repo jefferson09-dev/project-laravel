@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UsersModel;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
+
 
 class UsersController extends Controller
 {
@@ -19,15 +22,19 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
-        if($request->userpasse != $request->userpasseconfirma) {
-            return "As senhas não coincidem!";
-        }
-
         UsersModel::create([
             'email' => $request->usermail,
             'senhas' => $request->userpasse
         ]);
+
+        Mail::raw('Obrigado por se registrar em o nosso site!', function ($message) use ($request) {
+            $message->to($request->usermail)
+                    ->subject('Registro de Usuário');
+        });
         return $request->all();
      // "usermail":"jeffersonn.rodrigo.09@gmail.com","userpasse":"1234","userpasseconfirma":"1234"
     }
 }
+
+
+
