@@ -24,6 +24,11 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Criar Conta</h3></div>
                                     <div class="card-body">
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <strong>Ops!</strong> Verifique os campos abaixo:
+                                            </div>
+                                        @endif
                                         <form action="/register" method="POST"> <!-- Formulario -->
                                             @csrf <!-- token segurança, contras robos -->
                                             <div class="form-floating mb-3">
